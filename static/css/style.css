@@ -38,25 +38,67 @@
 .inicio .frase-inicio{
     margin: 0.5em;
 }
+.inicio .form-inicio {
+    height: 35px;
+    width: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .inicio .form-inicio input[type="file"]{
     display: none;
 }
 .inicio .form-inicio label{
     color: white;
-    padding: 0.5em;
-    height: 35px;
+    height: 100%;
+    width: 100%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    width: 30%;
     border-radius: 10px;
     background: var(--color-azul);
     border: 0.3px solid white;
     background: var(--color-navyLightBlue_0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .inicio .form-inicio label:hover{
     background: var(--color-navyLightBlue_1);
     transition: .5s;
     cursor: pointer;
+}
+.inicio .form-inicio .loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    position: absolute;
+    transform: translateY(-100px);
+}
+.inicio .form-inicio .loader > span {
+    display: inline-block;
+    background: purple;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    margin: 0 8px;
+    transform: translate3d(0);
+    animation: bounce 0.6s infinite alternate;
+}
+.inicio .form-inicio .loader > span:nth-child(2){
+    background: palevioletred;
+    animation-delay: 0.2s;
+}
+.inicio .form-inicio .loader > span:nth-child(3){
+    background: rgb(206, 162, 177);
+    animation-delay: 0.4s;
+}
+.inicio .visual-map2{
+    width: 300px;
+    height: 300px;
+    background: white;
 }
 /*Config. del header*/
 .nav {
@@ -202,4 +244,12 @@
     object-fit: contain;
     width: 186px;
     height: 61px;
+}
+
+@keyframes bounce {
+    to {
+        width: 16px;
+        height: 16px;
+        transform: translate3d(0, -16px, 0);
+    }
 }

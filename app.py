@@ -38,6 +38,11 @@ def dashboard():
     '''
     Cargamos el app.html segunda parte visual
     '''
+    if request.method == "POST":
+        if request.files:
+            images = request.files.getlist('images[]')
+            print(images)
+        print('no images')
     return render_template("app.html") #App
 #Rutas verificar
 
