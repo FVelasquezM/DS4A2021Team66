@@ -1,11 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="inicio">
-    <form action="">
-        {{data}}
+    {{ form.hidden_tag() }}
+    <div class="inicio">
         <h1 class="frase-inicio">Frase</h1>
-        <button type="submit" id="loadImage" class="button-inicio"> Load image </button>
-    </form>
-</div>
+        <form method="POST" action="" class="form-inicio">
+            {{ form.photo }}
+            <label for="photo">
+                Load Image
+            </label>
+        </form>
+    </div>
 {% endblock %}
