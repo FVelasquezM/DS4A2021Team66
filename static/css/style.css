@@ -1,6 +1,6 @@
-/*Fuente: Roboto - Bold*/
+/*Fuente: Monserrat - Bold*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-/*Fuente: Roboto - Regular*/
+/*Fuente: Monserrat - Regular*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /*Config. generales*/
 *{
@@ -8,8 +8,8 @@
     padding: 0;
 }
 :root {
-    --color-azul: #1A4F9F;
-    --color-azulClaro: #4a83d8;
+    --color-navyDarkBlue_0: #0B0B45;
+    --color-navyDarkBlue_1: #282828;
     --color-hover: rgb(161, 161, 161);
 }
 .main {
@@ -22,11 +22,25 @@
     overflow: hidden;
     height: 100vh;
 }
+/*Config. de todo el html inicio*/
+.inicio {
+    width: 100%;
+    height: 100%;
+    background: #0B0B45;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inicio .frase-inicio{
+    
+}
+.inicio .button-inicio{
 
+}
 /*Config. del header*/
 .nav {
     display: flex;
-    background: var(--color-azul);
     width: 100vw;
     height: 75px;
 }
