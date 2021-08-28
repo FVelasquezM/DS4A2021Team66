@@ -1,8 +1,16 @@
 from flask import Flask, request, render_template, jsonify, make_response, after_this_request, redirect, url_for
 from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField, FileAllowed
+from wtforms.validators import ValidationError
 import json
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+#Creacion de forms
+class LoadImageForm(FlaskForm):
+    image = FileField('Load image', validators=[FileAllowed(['tiff'])])
+    submit = SubmitField('Submit')
 
 #Rutas visuales
 @app.route("/")
@@ -10,7 +18,14 @@ def load_main():
     '''
     Cargamos el index.html primera parte visual
     '''
-    return render_template("inicio.html") #Inicio
+    main_form = LoadImageForm()
+
+    if main_form.validate_on_submit():
+        filename = secure_filename(main_form.file.data.filename)
+        main_form.file.data.save('uploads/' + filename)
+        return redirect(url_for('load_app'))
+    return render_template("inicio.html", data = main_form) #Inicio
+
 
 @app.route("/app")
 def load_app():
