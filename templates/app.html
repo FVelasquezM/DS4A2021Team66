@@ -1,24 +1,48 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="content">
-    <div class="visualization">
-        <div class="visual-map"></div>
-    </div>
-    <div class="app">
-        <div class="analisis">
-            <div class="title-analisis"><p>Parámetros generales de zonas productivas</p></div>
-            <form class="form-analisis">
-                <label><input type="checkbox" class="checkAnalisis" value="cultivos"> Cultivos</label>
-                <label><input type="checkbox" class="checkAnalisis" value="construcciones"> Construcciones</label>
-                <label><input type="checkbox" class="checkAnalisis" value="bosques"> Bosques</label>
-                <label><input type="checkbox" class="checkAnalisis" value="lotesPastoreos"> Lotes de pastoreo</label>
-                <label><input type="checkbox" class="checkAnalisis" value="recursosHidricos"> Recursos hídricos</label>
-                <label><input type="checkbox" class="checkAnalisis" value="carreteras"> Carreteras</label>
-                <label><input type="checkbox" class="checkAnalisis" value="viviendas"> Viviendas</label>
-            </form>
+
+    <div class="main">
+        <div class="content">
+            <div class="nav">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}"src="./SourcesFP/logo.png" alt="Gobierno de Colombia" class="img-logo">
+                </div>
+                <div class="titulo">
+                    <div class="texto">Zonas Productivas de la Ruralidad de Bogotá</div>
+                </div>
+                <div class="aboutus">
+                    <a href="#"><i class="fas fa-users"></i></a>
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="visual-map"></div>
+            </div>
+            <div class="app">
+                <div class="analisis">
+                    <div class="title-analisis"><p>Parámetros generales de zonas productivas</p></div>
+                    <form class="form-analisis">
+                        <label><input type="checkbox" class="checkAnalisis" value="cultivos"> Cultivos</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="construcciones"> Construcciones</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="bosques"> Bosques</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="lotesPastoreos"> Lotes de pastoreo</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="recursosHidricos"> Recursos hídricos</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="carreteras"> Carreteras</label>
+                        <label><input type="checkbox" class="checkAnalisis" value="viviendas"> Viviendas</label>
+                    </form>
+                </div>
+                <div class="graphs"></div>
+            </div>
+            <div class="footer">
+                    <div class="img-left">
+                        <img src="{{ url_for('static', filename='images/logo-footer.png') }}" alt="Secretaria de Desarrollo Económico">
+                    </div>
+                    <div class="img-right">
+                        <img src="{{ url_for('static', filename='images/logo2-footer.svg') }}" alt="Correlation One">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="graphs"></div>
     </div>
-</div>
+
 {% endblock %}
