@@ -1,0 +1,244 @@
+/*Fuente: Roboto - Bold*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+/*Fuente: Roboto - Regular*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/*Config. generales*/
+*{
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --color-azul: #1A4F9F;
+    --color-azulClaro: #4a83d8;
+    --color-hover: rgb(161, 161, 161);
+}
+.main {
+    display: grid;
+    grid-template-rows: 75px calc(100vh - 150px) 75px;
+    grid-template-areas: 
+        "nav"
+        "content"
+        "footer";
+    overflow: hidden;
+    height: 100vh;
+}
+
+/*Config. del header*/
+.nav {
+    display: flex;
+    background: var(--color-azul);
+    width: 100vw;
+    height: 75px;
+}
+
+/* COMPONENTES DEL HEADER */
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 1 20%;
+    height: 100%;
+    padding-left: 1em;
+}
+/*Logo del header: imagen gov.co*/
+.logo img{
+    object-fit: contain;
+    width: 148px;
+    height: 34px;
+}
+.titulo{
+    padding-left: 3em;
+    flex: 3 1 60%;
+    height: 100%;
+}
+.titulo .texto{
+    margin-top: .5rem;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+}
+/*Diseño botón que redirecciona a about us*/
+.aboutus{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    flex: 3 1 20%;
+    height: 100%;
+    padding-right: 2em;
+}
+.aboutus a{
+    text-decoration: none;
+    color: white;
+}
+.aboutus a:hover{
+    color: var(--color-hover);
+    transition: 0.2s;
+}
+
+/*COMPONENTENS DEL CONTENT*/
+.content{
+    display: flex;
+}
+/*visualization: Donde se ubica el mapa*/
+.content .visualization{
+    width: 65%;
+    padding: 2em;
+}
+.content .visualization .visual-map{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+/*App: Donde se visualizan los datos*/
+.content .app{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding: 2em;
+}
+/*Todo lo del buscador por predio*/
+.content .search{
+    width: 100%;
+    height: 20%;
+    margin-bottom: 2em;
+}
+/*Titulo*/
+.content .search .title-search{
+    width: 100%;
+    height: 48px;
+    background: var(--color-azul);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/*input*/
+.content .search .form-search{
+    position: relative;
+    display: flex;
+    padding-right: .5em;
+    padding-left: .5em;
+}
+.content .search .form-search .blue-search{
+    margin-top: 0.82em;
+    display: inline-block;
+    border-radius: 10px 0 0 10px;
+    position: absolute;
+    width: 3%;
+    height: 32.5px;
+    background: var(--color-azulClaro);
+    z-index: 1000;
+    border-right: none;
+    border-bottom: 0.3px solid black;
+    border-top: 0.3px solid black;
+    border-left: 0.3px solid black;
+}
+.content .search .form-search input{
+    padding-left: 35px;
+    width: 80%;
+    border-radius: 10px 0 0 10px;
+    height: 33px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    margin-top: 1em;
+    border-right: none;
+    border-bottom: 0.3px solid black;
+    border-top: 0.3px solid black;
+    border-left: none;
+    outline: none;
+    z-index: 100;
+}
+.content .search .form-search button{
+    margin-top: 1em;
+    height: 35px;
+    border: none;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    color: white;
+    width: 20%;
+    border-radius: 0 10px 10px 0;
+    background: var(--color-azul);
+    border-right: 0.3px solid black;
+    border-bottom: 0.3px solid black;
+    border-top: 0.3px solid black;
+    border-left: none;
+}
+.content .search .form-search button:hover{
+    background: var(--color-azulClaro);
+    transition: .5s;
+}
+.content .search .form-search input:focus {
+    outline: none;
+}
+/*analisis*/
+.content .analisis{
+    width: 100%;
+    height: 35%;
+    margin-bottom: 2em;
+}
+.content .analisis .title-analisis{
+    width: 100%;
+    height: 58px;
+    background: var(--color-azul);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.content .analisis .form-analisis{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: .5em;
+    padding-left: .5em;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+.content .analisis .form-analisis .checkAnalisis{
+    margin: 1em;
+    flex: 1 1 10em;
+}
+/*graphs*/
+.content .graphs{
+    width: 100%;
+    height: 40%;
+}
+/*COMPONENTES DEL FOOTER*/
+.footer{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 75px;
+}
+.footer .img-left{
+    width: 50%;
+    height: 100%;
+}
+.footer .img-left img{
+    object-fit: contain;
+    width: 304px;
+    height: 61px;
+}
+.footer .img-right{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1em;
+    width: 50%;
+    height: 100%;
+}
+.footer .img-right img{
+    object-fit: contain;
+    width: 186px;
+    height: 61px;
+}
