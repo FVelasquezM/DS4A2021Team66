@@ -1,9 +1,6 @@
 from flask import Flask, request, render_template, jsonify, make_response, after_this_request, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import SubmitField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-import json
-from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 
@@ -39,8 +36,36 @@ def dashboard():
         if request.files:
             print('Soy request files')
             data = request.files.getlist('file')
-            print(data)
+            print(data[0])
     return render_template("app.html") #App
 
+
+@app.route("/data-barplot", methods=["POST", "GET"])
+def load_barplot():
+    '''
+    Visualización del barplot
+    '''
+    #Simulacion de datos
+    data = {
+        "cultivos": "10",
+        "construcciones": "3",
+        "bosques": "2",
+        "lotesPastoreo": "4",
+        "recursosHidricos": "1",
+        "carreteras": "0",
+        "viviendas": "6",
+        "aleoductos": "1",
+        "rios": "0",
+        "montañas": "3"
+    }
+    res = make_response(jsonify(data), 200)
+    if request.method == "POST":
+        if request.files:
+            print('Soy request files')
+        if request.data:
+            print('Soy request files')
+        if request.json:
+            print('Soy request files')
+    return res
 if __name__ == '__main__':
     app.run(debug = True)
