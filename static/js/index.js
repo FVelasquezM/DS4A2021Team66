@@ -8,29 +8,37 @@ const $labelPhoto = document.getElementById('label-photo')
 /* App */ 
 const $visualMap = document.getElementById('visual-map2')
 const $imagePreview = document.querySelector('.image_preview')
+$photoLoader.onchange = (e) => {
+    verifyImage()
+}
 
-$photoLoader.addEventListener("change", function() {
-    loadImage('images/test.TIF')
-});
+const verifyImage = () => {
+    
+    let archivoRuta = $photoLoader.value;
+    const allowExtensions = /(.tif)$/i;
 
-var loadImage = function (filename) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', filename);
-    xhr.responseType = 'arraybuffer';
-    xhr.onload = function (e) {
-      var buffer = xhr.response;
-      var tiff = new Tiff({buffer: buffer});
-      var canvas = tiff.toCanvas();
-      var width = tiff.width();
-      var height = tiff.height();
-      if (canvas) {
-        $visualMap.innerHTML = '<div><div><a href="' + filename + '">' +
-                      filename +
-                      ' (width: ' + width + ', height:' + height + ')' +
-                      '</a></div></div>';
-        $visualMap.append(canvas);
-        $('body').append($elem);
-      }
-    };
-    xhr.send();
+    while(!archivoRuta){
+        $labelPhoto.style.display = "none";
+        $effectLoader.style.opacity = "1";
+        $effectLoader.style.transform = "translateY(0)";
+    }
+
+    if(!allowExtensions.exec(archivoRuta)){
+        alert('Incorrect file!')
+        $photoLoader = 0;
+        return false;
+    }else{
+        const data = new FormData();
+        data.append('images', archivoRuta);
+
+        const settings = {
+            method: "POST",
+            body: data,
+            headers: new Headers({
+                "content-type": "image/tif",
+            }),
+            mode: "no-cors",
+        };
+        const res = await fetch(`${urlVerifyImage}`, settings);
+    }
 };
