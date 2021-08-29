@@ -38,8 +38,8 @@ def dashboard():
     if request.method == "POST":
         if request.files:
             print('Soy request files')
-            request.files.getlist('images[]')
-        print('no images')
+            data = request.files.getlist('file')
+            print(data)
     return render_template("app.html") #App
 
 if __name__ == '__main__':
