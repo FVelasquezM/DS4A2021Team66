@@ -22,20 +22,17 @@ const verifyImage = () => {
         $photoLoader = 0;
         return false;
     }else{
-        const data = new FormData();
-        data.append('images', archivoRuta);
-
-        const settings = {
-            method: "POST",
-            body: data,
-            headers: new Headers({
-                "content-type": "image/tif",
-            }),
-            mode: "no-cors",
-        };
-
         if($photoLoader.files && $photoLoader.files[0]){
             let visor = new FileReader();
+
+            var data = new FormData()
+            data.append('file', $photoLoader.files[0])
+
+            const settings = {
+                method: "POST",
+                body: data
+            };
+
             visor.onload = async (e) => {
                 $labelPhoto.style.display = "none";
                 $effectLoader.style.opacity = "1";

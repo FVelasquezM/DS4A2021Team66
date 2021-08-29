@@ -5,13 +5,14 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 import json
 from werkzeug.utils import secure_filename
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
 
 #Config del entorno
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
-
+CORS(app)
 #Creacion de forms
 class LoadImageForm(FlaskForm):
     photo = FileField('Load Image', validators=[
@@ -26,10 +27,6 @@ def load_main():
     Cargamos el index.html primera parte visual
     '''
     main_form = LoadImageForm()
-    if request.method == "POST":
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(main_form.upload.data.filename))
-        main_form.upload.data.save(file_path)
-        return redirect(url_for('dashboard'))
     return render_template("inicio.html", form = main_form) #Inicio
 
 
@@ -40,8 +37,8 @@ def dashboard():
     '''
     if request.method == "POST":
         if request.files:
-            images = request.files.getlist('images[]')
-            print('si files')
+            print('Soy request files')
+            request.files.getlist('images[]')
         print('no images')
     return render_template("app.html") #App
 
