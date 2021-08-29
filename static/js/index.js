@@ -15,13 +15,7 @@ $photoLoader.onchange = (e) => {
 const verifyImage = () => {
     
     let archivoRuta = $photoLoader.value;
-    const allowExtensions = /(.tif)$/i;
-
-    while(!archivoRuta){
-        $labelPhoto.style.display = "none";
-        $effectLoader.style.opacity = "1";
-        $effectLoader.style.transform = "translateY(0)";
-    }
+    const allowExtensions = /(.tif|.tiff)$/i;
 
     if(!allowExtensions.exec(archivoRuta)){
         alert('Incorrect file!')
@@ -39,6 +33,19 @@ const verifyImage = () => {
             }),
             mode: "no-cors",
         };
-        const res = await fetch(`${urlVerifyImage}`, settings);
+
+        if($photoLoader.files && $photoLoader.files[0]){
+            let visor = new FileReader();
+            visor.onload = async (e) => {
+                $labelPhoto.style.display = "none";
+                $effectLoader.style.opacity = "1";
+                $effectLoader.style.transform = "translateY(0)";
+                alert('ok')
+                const res = await fetch(`${urlVerifyImage}`, settings);
+            }
+            visor.readAsDataURL($photoLoader.files[0]);
+        }else{
+            alert("some fails")
+        }
     }
 };

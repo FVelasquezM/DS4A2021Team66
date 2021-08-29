@@ -41,7 +41,7 @@ def dashboard():
     if request.method == "POST":
         if request.files:
             images = request.files.getlist('images[]')
-            print(images)
+            print('si files')
         print('no images')
     return render_template("app.html") #App
 
