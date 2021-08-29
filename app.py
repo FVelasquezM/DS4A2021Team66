@@ -44,12 +44,6 @@ def dashboard():
             print(images)
         print('no images')
     return render_template("app.html") #App
-#Rutas verificar
-
-#@app.route("/") #Load image
-
-#@app.route("/") #checkbox
-
 
 if __name__ == '__main__':
     app.run(debug = True)
