@@ -8,6 +8,7 @@ const $labelPhoto = document.getElementById('label-photo')
 /* App */ 
 const $visualMap = document.getElementById('visual-map2')
 const $imagePreview = document.querySelector('.image_preview')
+
 $photoLoader.onchange = (e) => {
     verifyImage()
 }

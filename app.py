@@ -30,7 +30,7 @@ def load_main():
     return render_template("inicio.html", form = main_form) #Inicio
 
 
-@app.route("/app", methods=["POST"])
+@app.route("/app", methods=["POST", "GET"])
 def dashboard():
     '''
     Cargamos el app.html segunda parte visual

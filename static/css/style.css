@@ -8,8 +8,8 @@
     padding: 0;
 }
 :root {
-    --color-navyDarkBlue_0: #0B0B45;
-    --color-navyDarkBlue_1: #282828;
+    --color-navyDarkBlue_0: #8395a7;
+    --color-navyDarkBlue_1: #2d3436;
     --color-navyLightBlue_0: #1d1d5c;
     --color-navyLightBlue_1: #343475;
     --color-hover: rgb(161, 161, 161);
@@ -65,7 +65,9 @@
     justify-content: center;
 }
 .inicio .form-inicio label:hover{
-    background: var(--color-navyLightBlue_1);
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     transition: .5s;
     cursor: pointer;
 }
@@ -95,17 +97,14 @@
     background: rgb(206, 162, 177);
     animation-delay: 0.4s;
 }
-.inicio .visual-map2{
-    width: 300px;
-    height: 300px;
-    background: white;
-}
 /*Config. del header*/
 .nav {
     display: flex;
     width: 100vw;
     height: 75px;
-    background: var(--color-navyDarkBlue_1);
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* COMPONENTES DEL HEADER */
@@ -114,7 +113,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    flex: 1 1 20%;
+    flex: 1 1 10%;
     height: 100%;
     padding-left: 1em;
 }
@@ -125,12 +124,14 @@
     height: 34px;
 }
 .titulo{
-    padding-left: 3em;
-    flex: 3 1 60%;
+    flex: 3 1 80%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .titulo .texto{
-    margin-top: 1rem;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 28px;
@@ -144,7 +145,7 @@
     align-items: center;
     color: white;
     font-size: 2em;
-    flex: 3 1 20%;
+    flex: 3 1 10%;
     height: 100%;
     padding-right: 2em;
 }
@@ -171,6 +172,7 @@
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    border: 3px solid black;
 }
 /*App: Donde se visualizan los datos*/
 .content .app{
@@ -188,7 +190,8 @@
 .content .analisis .title-analisis{
     width: 100%;
     height: 58px;
-    background: var(--color-azul);
+    background: #222f3e;
+    border-radius: 7px;
     color: white;
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -203,13 +206,74 @@
     padding-right: .5em;
     padding-left: .5em;
     color: white;
+}
+.content .analisis .form-analisis label{
+    margin: 1em;
+    cursor: pointer;
+}
+.content .analisis .form-analisis input[type="checkbox"]{
+    display: none;
+}
+.content .analisis .form-analisis span{
+    background: #424242;
+    padding: 10px 20px;
+    color: #555;
+    text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    border-radius: 30px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 15px;
+    transition: 0.5s;
+}¿
+.content .analisis .form-analisis label:first-child input[type="checkbox"]:checked ~ span {
+    background: rgb(218, 88, 88);
+    box-shadow: 0 2px 20px rgb(218, 88, 88);
+    color: white;
 }
-.content .analisis .form-analisis .checkAnalisis{
-    margin: 1em;
-    flex: 1 1 10em;
+.content .analisis .form-analisis label:nth-child(2) input[type="checkbox"]:checked ~ span {
+    background: rgb(29, 216, 45);
+    box-shadow: 0 2px 20px rgb(29, 216, 45);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(3) input[type="checkbox"]:checked ~ span {
+    background: rgb(36, 186, 255);
+    box-shadow: 0 2px 20px rgb(36, 186, 255);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(4) input[type="checkbox"]:checked ~ span {
+    background: rgb(231, 253, 29);
+    box-shadow: 0 2px 20px rgb(231, 253, 29);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(5) input[type="checkbox"]:checked ~ span {
+    background: rgb(69, 36, 255);
+    box-shadow: 0 2px 20px rgb(69, 36, 255);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(6) input[type="checkbox"]:checked ~ span {
+    background: rgb(243, 20, 232);
+    box-shadow: 0 2px 20px rgb(243, 20, 232);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(7) input[type="checkbox"]:checked ~ span {
+    background: rgb(223, 12, 12);
+    box-shadow: 0 2px 20px rgb(223, 12, 12);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(8) input[type="checkbox"]:checked ~ span {
+    background: rgb(20, 255, 39);
+    box-shadow: 0 2px 20px rgb(20, 255, 39);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(9) input[type="checkbox"]:checked ~ span {
+    background: rgb(255, 153, 0);
+    box-shadow: 0 2px 20px rgb(255, 153, 0);
+    color: white;
+}
+.content .analisis .form-analisis label:nth-child(10) input[type="checkbox"]:checked ~ span {
+    background: rgb(62, 15, 77);
+    box-shadow: 0 2px 20px rgb(62, 15, 77);
+    color: white;
 }
 /*graphs*/
 .content .graphs{
@@ -222,22 +286,15 @@
     flex-direction: row;
     width: 100vw;
     height: 75px;
-    background: var(--color-navyDarkBlue_1);
-}
-.footer .img-left{
-    width: 50%;
-    height: 100%;
-}
-.footer .img-left img{
-    object-fit: contain;
-    width: 304px;
-    height: 61px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .footer .img-right{
     display: flex;
     justify-content: flex-end;
     padding-right: 1em;
-    width: 50%;
+    width: 100%;
     height: 100%;
 }
 .footer .img-right img{
@@ -245,7 +302,9 @@
     width: 186px;
     height: 61px;
 }
-
+.noDispo{
+    display: none;
+}
 @keyframes bounce {
     to {
         width: 16px;
