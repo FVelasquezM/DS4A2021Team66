@@ -1,3 +1,8 @@
-tensorflow==2.4.2
+tensorflow==2.6.0
 pillow==8.2.0
-tiff
+tifffile
+numpy
+pandas
+opencv-python
+shapely
+keras==2.6.0
