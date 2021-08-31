@@ -30,7 +30,7 @@ The overall architecture is shown in the following image:
 
 The model used is a U-Net-like deep convolutional neural network, based on the work of PERSON. The model's architecture is shown in the following figure:
 
-![Backend architecture](ModelArchitecture.png)
+![Model architecture](ModelArchitecture.jpeg)
 
 The model was trained using World View 3 sensor data, taken from Kaggle's [Dstl Satellite Imagery Feature Detection competition](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection), which are 8 band multispectral: (red, red edge, coastal, blue, green, yellow, near-IR1 and near-IR2) satellite images.
 
