@@ -20,10 +20,19 @@ Resources:
           Properties:
             Path: /segment_tiff
             Method: post
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref ResultsBucket
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref ResultsBucket
+
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: ./app
       DockerTag: python3.8-v1
+  ResultsBucket:
+    Type: AWS::S3::Bucket
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

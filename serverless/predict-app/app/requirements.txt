@@ -6,3 +6,4 @@ pandas
 opencv-python
 shapely
 keras==2.6.0
+mysql-connector-python

@@ -246,3 +246,4 @@ serverless/predict-app/samconfig.toml
 */.aws-sam/*
 serverless/predict-app/6080_3_0_M.tif
 serverless/predict-app/6160_2_0_M.tif
+.aws-sam/*

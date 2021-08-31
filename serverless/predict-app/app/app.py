@@ -16,11 +16,62 @@ import shapely.wkt
 import shapely.affinity
 from collections import defaultdict
 import pickle
+import boto3
+import os
+import uuid
+import mysql.connector
 
 
 size = 160
 s = 835
 smooth = 1e-12
+
+def store_to_s3(binary_data, keyname):
+    """
+    Stores binary_data to s3
+
+    Parameters
+    ----------
+    binary_data : ByteStream
+        the ByteStream to be written in S3
+    keyname : string
+        the name which will be used to save the object
+    """
+
+    print('environ')
+    print(os.environ)
+    client = boto3.client('s3')
+    client.put_object(Body=binary_data, Bucket= os.environ['BUCKET_NAME'], Key=keyname)
+
+def store_to_db(uid, file_name):
+    """
+    Stores uid and filename to rds.
+
+    Parameters:
+    -----------
+    uid : string
+        The resource's uid
+    filename : string
+        The resource's filename in AWS 
+    """
+
+    mydb = mysql.connector.connect(
+        host="database-2.c0a84dqmckxu.us-east-1.rds.amazonaws.com",
+        user="admin",
+        password="12345678",
+        database="images"
+    )
+
+    mycursor = mydb.cursor()
+
+    sql = "INSERT INTO images (id, fileName) VALUES (%s, %s)"
+    val = (uid, file_name)
+    mycursor.execute(sql, val)
+
+    mydb.commit()
+    mydb.close()
+
+
 
 def mask_to_polygons(mask, epsilon=5, min_area=1.):
     """
@@ -230,6 +281,12 @@ def lambda_handler(event, context):
         ploy.append(len(ab))
         df = pd.DataFrame(list(zip(image, cl, ploy, t_l)), columns = ['image', 'class', 'poly', 'Multi'])
     DF = pd.concat([DF,df], ignore_index=True)
+
+    #Stores the results to s3 and RDS for future reference
+    uid = uuid.uuid4()
+    store_to_s3(pickle.dumps(DF), f'{str(uid)}.p')
+    store_to_db(str(uid), f'{str(uid)}.p')
+
 
     #Return the dataframe as a pickle file to the frontend so that it can be easily displayed.
     return {
