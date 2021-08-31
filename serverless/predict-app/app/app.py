@@ -21,12 +21,19 @@ import pickle
 size = 160
 s = 835
 smooth = 1e-12
-model = None
-
 
 def mask_to_polygons(mask, epsilon=5, min_area=1.):
     """
-    converts a mask into polygons.
+    Converts a binary mask of shape (size, size, 1) into a shapely Polygon
+
+    Parameters
+    ----------
+    mask : ndarray
+        The mask to convert
+    epsilon : int, optional
+        The epsilon factor for cv2's approxPolyDP function.
+    min_area : int, optional
+        The minimum number of contiguous pixels for a Polygon to be generated.
     """
     
     contours, hierarchy = cv2.findContours(((mask == 1) * 255).astype(np.uint8), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_TC89_KCOS)
@@ -66,9 +73,21 @@ def mask_to_polygons(mask, epsilon=5, min_area=1.):
 
 def adjust_contrast(bands, lower_percent=2, higher_percent=98):
     """
-    to adjust the contrast of the image 
-    bands is the image 
+    Adjusts an image's contrast using the formula
+
+    (pixel_value - lower_percentile)/(higher_percent - lower_percentile)
+
+    Parameters
+    ----------
+    mask : ndarray
+        The mask to convert
+    lower_percent : int, optional
+       The lower percent to be used for the contrast adjustment.
+    higher_percent : int, optional
+        The higher percent to be used for the contrast adjustment.
     """
+
+
     out = np.zeros_like(bands).astype(np.float32)
     n = bands.shape[2]
     for i in range(n):
@@ -85,10 +104,18 @@ def adjust_contrast(bands, lower_percent=2, higher_percent=98):
 
 def jaccard_coef(y_true, y_pred):
     """
-    Jaccard Index: Intersection over Union.
+    Computes the Jaccard Index: Intersection over Union.
     J(A,B) = |A∩B| / |A∪B| 
          = |A∩B| / |A|+|B|-|A∩B|
+
+    Parameters
+    ----------
+    y_true : ndarray
+        The ground truth.
+    y_pred : ndarray
+        The predicted values.
     """
+
     intersection = K.sum(y_true * y_pred, axis=[0, -1, -2])
     total = K.sum(y_true + y_pred, axis=[0, -1, -2])
     union = total - intersection
@@ -98,6 +125,10 @@ def jaccard_coef(y_true, y_pred):
     return K.mean(jac)
 
 def SegNet():
+    """
+    Creates a tensorflow convolutional neural network based on the u-net architecture. 
+    For more information on the network architecture please refer to the documentation.
+    """
     
     tf.random.set_seed(32)
     classes= 10
@@ -155,19 +186,33 @@ def SegNet():
     return model
 
 def lambda_handler(event, context):
+    """
+    AWS lamba function handler. Receives an API Gateway event, expecting it to contain a binary tiff file.
+    Returns a python dictionary containing the response code and a base64 encoded pickle file with the image's polygons.
+
+    Parameters
+    ----------
+    event : ApiGatewayEvent
+        The ApiGatewayEvent. It's expected to contain a tiff file in its body.
+    context : Context
+        AWS Event context.
+    """
+
+    #Load image, roll axis so that channels end up on the last dimension and adjust image contrast.
     image_bytes = event['body'].encode('utf-8')
+    print("EVENT")
+    print(event)
     img = tiff.imread(BytesIO(base64.b64decode(image_bytes)))
     img = np.rollaxis(img, 0, 3)
-    print('IMAGE')
-    print(img.shape)
     img = adjust_contrast(img).copy()
 
-    if model is None:
-        model = SegNet()
-        model.load_weights("model-weights.hdf5")
+    #Create CNN and load previously trained weights.
+    model = SegNet()
+    model.load_weights("model-weights.hdf5")
 
     res = model.predict(img.reshape((1, 160, 160, 8)))
 
+    #If the predicted logits for any class is greater than 0.5, the class is asigned to the pixel.
     threshold = 0.5
     pred_binary_mask = res >= threshold
 
@@ -186,14 +231,10 @@ def lambda_handler(event, context):
         df = pd.DataFrame(list(zip(image, cl, ploy, t_l)), columns = ['image', 'class', 'poly', 'Multi'])
     DF = pd.concat([DF,df], ignore_index=True)
 
-    print('DF')
-    print(DF)
-    with open('temp.p', 'wb') as f:
-        pickle.dump('temp.p', f)
-    with open('temp.p', 'rb') as f:
-        return {
-            'statusCode': 200,
-            'body': base64.b64encode(f.read()).decode('utf-8'),
-            'isBase64Encoded': True
-        }
+    #Return the dataframe as a pickle file to the frontend so that it can be easily displayed.
+    return {
+        'statusCode': 200,
+        'body': base64.b64encode(pickle.dumps(DF)).decode('utf-8'),
+        'isBase64Encoded': True
+    }
     
