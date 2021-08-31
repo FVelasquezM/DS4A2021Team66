@@ -26,8 +26,14 @@ The overall architecture is shown in the following image:
 
 ![Backend architecture](BackendArchitecture.png)
 
-<TODO>
-
 ## Model Architecture and performance
+
+The model used is a U-Net-like deep convolutional neural network, based on the work of PERSON. The model's architecture is shown in the following figure:
+
+![Backend architecture](ModelArchitecture.png)
+
+The model was trained using World View 3 sensor data, taken from Kaggle's [Dstl Satellite Imagery Feature Detection competition](https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection), which are 8 band multispectral: (red, red edge, coastal, blue, green, yellow, near-IR1 and near-IR2) satellite images.
+
+The trained model achieved a test jaccard score of 0.49.
 
 <TODO>
