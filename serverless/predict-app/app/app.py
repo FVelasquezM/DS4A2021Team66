@@ -251,6 +251,16 @@ def lambda_handler(event, context):
 
     #Load image, roll axis so that channels end up on the last dimension and adjust image contrast.
     image_bytes = event['body'].encode('utf-8')
+    threshold = None
+    try:
+        threshold = event["queryStringParameters"]['threshold']
+        threshold = float(threshold)
+    except: 
+        threshold = None
+    if threshold is None:
+        threshold = 0.5
+    print('REQUESTED THRESHOLD')
+    print(threshold)
     print("EVENT")
     print(event)
     img = tiff.imread(BytesIO(base64.b64decode(image_bytes)))
@@ -264,7 +274,6 @@ def lambda_handler(event, context):
     res = model.predict(img.reshape((1, 160, 160, 8)))
 
     #If the predicted logits for any class is greater than 0.5, the class is asigned to the pixel.
-    threshold = 0.5
     pred_binary_mask = res >= threshold
 
 

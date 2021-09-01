@@ -28,7 +28,7 @@ The overall architecture is shown in the following image:
 
 ## Model Architecture and performance
 
-The model used is a U-Net-like deep convolutional neural network, based on the work of PERSON. The model's architecture is shown in the following figure:
+The model used is a U-Net-like deep convolutional neural network, the model and its pipeline is based on the work of [Kazi Saiful Islam Shawon](https://www.kaggle.com/ksishawon/segnet-dstl), [Sergey Mushinskiy](https://www.kaggle.com/ceperaang/lb-0-42-ultimate-full-solution-run-on-your-hw) and [Konstantin Lopuhin](https://www.kaggle.com/lopuhin/full-pipeline-demo-poly-pixels-ml-poly). The model's architecture is shown in the following figure:
 
 ![Model architecture](ModelArchitecture.jpeg)
 
