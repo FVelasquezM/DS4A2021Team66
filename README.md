@@ -6,13 +6,19 @@ This repository contains two modules: a dash frontend and a serverless predictio
 
 # Dash Frontend
 
+The dashborad of our application is deployed at: http://67.228.206.201:5000/
+
 ## Uploading an image
 
-<TODO>
+![Entry data point](dash-1.png)
+
+![Visualization of AI's results](dash-2.png)
 
 ## Visualizing the segmentation
 
-<TODO, mencionar que se usa estándar corine land cover y demás>
+### Visualization of AI's results:
+
+The data visualization shows the image being labeled by the corine land cover parameters, identifying the ten classes that are visualized in the bar chart, fulfilling the interactivity of being able to update the image and specify which of those ten classes you want to visualize individually.
 
 # Serverless backend
 
