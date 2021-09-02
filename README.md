@@ -10,9 +10,9 @@ The dashborad of our application is deployed at: http://67.228.206.201:5000/
 
 ## Uploading an image
 
-![Entry data point](dash-1.png)
+![Entry data point](dash-1.PNG)
 
-![Visualization of AI's results](dash-2.png)
+![Visualization of AI's results](dash-2.PNG)
 
 ## Visualizing the segmentation
 
