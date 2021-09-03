@@ -1,0 +1,46 @@
+*{
+    background: url('../images/background2.svg') right no-repeat fixed;
+    background-size: cover;
+    box-sizing: border-box;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+h3{
+    display: flex;
+     font-size: 1.5rem;   
+     padding: 1rem;
+     text-align: center;
+     font-family: 'Azeret Mono';
+     color: white;
+     padding-left: 3rem;
+}
+a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: var(color-navyDarkBlue_1);   
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(103, 143, 207, 0.2);
+    border: 0.25rem solid rgba(103, 143, 207, 0.5);
+    font-size: 0.75rem;
+}
+.logo{
+    height: 3rem;
+}
+
+.dash{
+    background: rgba(0, 0, 0, 0.25) ; 
+    margin: 2rem;
+    width: 90vw;
+    padding-top: 1rem;
+    min-height: 90vh;
+    border: none;
+    margin-left: 3.25rem;
+}

@@ -1,0 +1,164 @@
+
+
+.inicio{
+
+    background: url('../images/background2.svg') right no-repeat fixed;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.texto{
+    background: rgba(0, 0, 0, 0.35) ; 
+    padding: 1rem 6rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+
+ }
+
+.titulo{
+    color:white;
+    font-size: 3rem;   
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Azeret Mono';
+
+ }
+
+ .frase{
+    font-style: italic;
+    text-align: center;
+    color:white;
+
+ }
+
+ .cargar-imagen {
+	display: none;
+}
+
+
+
+.cargar-imagen-contenedor{
+    color: var(color-navyDarkBlue_1);   
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    background-color: rgba(103, 143, 207, 0.2);
+    border: 0.25rem solid rgba(103, 143, 207, 0.5);;
+    font-size: 1.25rem;
+    
+
+}
+.cargar-imagen-label{
+    padding-right: 1.25rem;
+    font-family: 'Azeret Mono';
+    cursor: pointer;
+
+}
+.cargar-imagen-contenedor:hover i {
+    transform: translateX(-0.75rem);
+  }
+
+
+.esperar {    
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background2.svg') right no-repeat fixed;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+  }
+
+  .frase-espera{
+    font-family: 'Azeret Mono';
+    color:rgb(233, 231, 231);
+    padding: 0 10rem;
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  
+
+
+  .circulos {
+    margin: 3rem;
+    display: flex;
+    background: rgba(0, 0, 0, 0.25) ; 
+    border-radius: 0.75rem;
+    padding: 0 10rem;
+    box-shadow: 0px 3rem 3rem -2rem rgba(0, 0, 0, 0.2);
+  }
+
+
+  .circulos span {
+    width: 2rem;
+    height: 2rem;
+    background: #b7c1de;
+    border-radius: 50%;
+    margin-left: 0.4rem;
+  }
+  
+  .circulos span:nth-child(2) {
+    background: #63345e;
+  }
+  
+  .circulos span:nth-child(3) {
+    background: #0b468c;
+  }
+  
+  .circulos span:nth-child(4) {
+    background: #ac61b9;
+  }
+  
+  .circulos span:not(:last-child) {
+    animation: animate 1.5s linear infinite;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(5rem);
+    }
+  }
+  
+  .circulos span:last-child {
+    animation: jump 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes jump {
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(10px, -10px);
+    }
+    20% {
+      transform: translate(20px, 10px);
+    }
+    30% {
+      transform: translate(30px, -50px);
+    }
+    70% {
+      transform: translate(-150px, -50px);
+    }
+    80% {
+      transform: translate(-140px, 10px);
+    }
+    90% {
+      transform: translate(-130px, -10px);
+    }
+    100% {
+      transform: translate(-120px, 0);
+    }
+  }
+   

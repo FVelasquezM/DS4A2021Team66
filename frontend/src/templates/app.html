@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} 
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}" />
+
+<title>DS4A AI</title>
+{% endblock %} 
+
+{% block body %}
+<div class="top"><img class='logo' src="../static/images/logo2.png" alt="">
+<h3>Here are your Results, Enjoy the Analysis</h3><a href="{{url_for('inicio')}}" >Try another image</a></div>
+<!-- renders the dash application component -->
+<iframe class="dash" src="http://67.228.206.201:8050/app/"></iframe>
+   
+
+{% endblock %}

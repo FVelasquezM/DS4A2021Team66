@@ -1,0 +1,2 @@
+Here we will find the image loaded by the user and the csv corresponding to the model responses.
+This information is saved locally in the flask application and store in our DDBB in AWS

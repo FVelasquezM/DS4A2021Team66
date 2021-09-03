@@ -4,17 +4,20 @@ This repository contains the final project carried out by team 66 of DS4A Colomb
 
 This repository contains two modules: a dash frontend and a serverless prediction backend.
 
-# Dash Frontend
+# Flask/Dash Frontend
 
-The dashborad of our application is deployed at: http://67.228.206.201:5000/
+For our application, we use the Flask framework for rendering the different routes, uploading the image,
+and making the requests to our serverless backend. 
+We embeeded a dash app within our main app to visualize the segmentation of our AI, and for user to interact inside the app with the different functionalities.
+
+Our application is deployed at: http://67.228.206.201:5000/
 
 ## Uploading an image
 
 ![Entry data point](dash-1.PNG)
 
-![Visualization of AI's results](dash-2.PNG)
-
 ## Visualizing the segmentation
+![Visualization of AI's results](dash-2.PNG)
 
 ### Visualization of AI's results:
 

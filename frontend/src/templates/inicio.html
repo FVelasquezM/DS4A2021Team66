@@ -1,0 +1,42 @@
+{% extends 'layout.html' %} 
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/inicio.css') }}" />
+<script src="{{ url_for('static', filename='js/inicio.js') }}"></script>
+
+<title>DS4A AI</title>
+{% endblock %} 
+
+{% block body %}
+
+<div class="inicio">
+    <div class="texto">
+        <h1 class="titulo">One Step Beyond</h1>
+        <h3 class="frase">Use AI to know and get insight on what is in your satellite images</h3>
+    </div>
+
+    <form method="POST"  class="form-inicio" action="{{ url_for('inicio') }}"  enctype="multipart/form-data" >
+      
+        <div class="cargar-imagen-contenedor"> 
+            <input type="file" class="cargar-imagen" id="cargar-imagen" name='file' accept="image/tiff" value="" onchange="LoadImage(this)">
+            <label class="cargar-imagen-label" for="cargar-imagen" >Give it a Try!!</label><i class="fas fa-long-arrow-alt-right"></i>
+        </div>
+       
+    </form>
+        
+</div>
+
+<div class='esperar'>
+    <h3 class="frase-espera">This is really Exciting, your Image is being Processed by our AI!!</h3>
+    <div class="circulos">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+</div>
+
+{% endblock %}
+

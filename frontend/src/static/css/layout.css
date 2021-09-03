@@ -1,0 +1,14 @@
+
+:root {
+
+    font-size: 16px;
+}
+
+
+*{
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    margin: 0;
+    padding: 0;
+
+}
