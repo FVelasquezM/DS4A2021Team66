@@ -12,63 +12,77 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 
 def image_layout():
-    classes=['Buildings', 'Manmade structures','Road','Track'
-                ,'Trees','Crops','Waterway','Standing water','Large vehicle','Small vehicle']
-    
-    # 1 inputs - classes that are being check as checkboxes and threshold selected from dropdown
+    """
+    Renders the dash app layout based on user callbacks
+
+    classes: 10 classes of classified objects
+    Graph(img): Tiff image figure with colored polygons depending on selected classes
+    Checklist: Checkboxes of classes  
+    Graph(bars): Bar plot of number of objects per selected class
+    Dropdown : Select classification threshold for the model
+
+    """
+    classes = ['Buildings', 'Manmade structures', 'Road', 'Track', 'Trees',
+               'Crops', 'Waterway', 'Standing water', 'Large vehicle', 'Small vehicle']
+
     try:
-        ## image figure with polygons colored depending on selected classes
         return html.Div([html.Div([
-        dcc.Graph(id='img',
-        config={'displayModeBar': True},style={'margin-right':'1rem'})]),
+            dcc.Graph(id='img',
+                      config={'displayModeBar': True}, style={'margin-right': '1rem'})]),
             html.Div([
 
-        # chechboxes of classes
-        dcc.Checklist(
-                id='class_buttons',
-                options=[{'label':i,'value': j} for j,i in enumerate(classes)],
-                value=list(range(len(classes))),
-            ),
-        ## bar plot of number of polygons per selected class
-        dcc.Graph(id='bars',
-        config={'displayModeBar': False})],id='right-side'),
-        
-        ## classification threshold for our model
-        html.Div([html.P(
-            [
-                "Classification Threshold",
-      ],id='cl'),dcc.Dropdown(id='thresh',
-    options=[
-       {'label':round(i*0.1,1),'value':round(i*0.1,1)} for i in range(1,10)
-    ],
-    
-   clearable=False,
-    value=0.5
-)  ],id='menu'),
-          
-    ],id='container')
+                dcc.Checklist(
+                    id='class_buttons',
+                    options=[{'label': i, 'value': j}
+                             for j, i in enumerate(classes)],
+                    value=list(range(len(classes))),
+                ),
+                dcc.Graph(id='bars',
+                          config={'displayModeBar': False})], id='right-side'),
+
+            html.Div([html.P(
+                [
+                    "Classification Threshold",
+                ], id='cl'), dcc.Dropdown(id='thresh',
+                                          options=[
+                                              {'label': round(i*0.1, 1), 'value': round(i*0.1, 1)} for i in range(1, 10)
+                                          ],
+
+                                          clearable=False,
+                                          value=0.5
+                                          )], id='menu'),
+
+        ], id='container')
     except:
         return html.Div('no image uploaded yet')
 
 
 app.layout = image_layout
 
-## callback receive outputs, call our function and returns two figures to be display
+
 @app.callback(
     Output('img', 'figure'),
-     Output('bars', 'figure'),
+    Output('bars', 'figure'),
     Input('class_buttons', 'value'),
     Input('thresh', 'value'))
-def update_figure(class_,thresh):
-    img,bars=apply_thresh_predict(class_,thresh)
-   
-    return img,bars
+def update_figure(class_, thresh):
+    """
+    callback: Receives 2 inputs.
+         Inputs: classes selected from the checkboxes and classification threshold applied. 
+         Outputs: image figure and bars figure
+    Re-render graphs based on classes checked and threshold applied 
 
+    Parameters
+    ----------
+    class_:list
+        list of classes checked
+    thresh:float 
+        Number between 0 and 1
+    """
+    img, bars = apply_thresh_predict(class_, thresh)
+
+    return img, bars
 
 
 if __name__ == '__main__':
     app.run_server(debug=False, host='0.0.0.0')
-
-
-
-
