@@ -12,11 +12,13 @@ We embeeded a dash app within our main app to visualize the segmentation of our 
 
 Our application is deployed at: http://67.228.206.201:5000/
 
-## Uploading an image
+## Frontend usage
+
+### Uploading an image
 
 ![Entry data point](dash-1.PNG)
 
-## Visualizing the segmentation
+### Visualizing the segmentation
 ![Visualization of AI's results](dash-2.PNG)
 
 ### Visualization of AI's results:
