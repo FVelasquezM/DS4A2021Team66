@@ -32,7 +32,7 @@ In order to run this project locally, on your machine, follow these steps:
 
 1. Install the frontend requirements
 
-    pip install -r requirements.txt
+    `pip install -r requirements.txt`
  
 4. 
 - Modificar ip en código, cambiar por localhost.
