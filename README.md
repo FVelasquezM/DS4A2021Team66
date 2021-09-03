@@ -19,7 +19,7 @@ To use the frontend, start by accessing it at the url: http://67.228.206.201:500
 Once on the website, you will be presented with the following screen:
 ![Entry data point](dash-1.PNG)
 
-Click the *Give it a try* button and select a 160x160 8-channel World View 3 Satellite image, you can find some sample images <HERE, poner acá link al drive de imágenes>.  Once uploaded, wait a few seconds for the application to process your image.
+Click the *Give it a try* button and select a 160x160 8-channel World View 3 Satellite image, you can find some sample images [here](https://drive.google.com/drive/folders/1SGMgrAGDwpqEkLlEdxxWehlr7VeF9Eqc?usp=sharing).  Once uploaded, wait a few seconds for the application to process your image.
 
 ### Visualizing the segmentation
 ![Visualization of AI's results](dash-2.PNG)
