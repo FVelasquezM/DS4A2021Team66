@@ -34,10 +34,13 @@ In order to run this project locally, on your machine, follow these steps:
 
     `pip install -r requirements.txt`
  
-4. 
-- Modificar ip en código, cambiar por localhost.
-- app.py & app_dash.py
+2. Start app_dash.py with:
 
+    `python app_dash.py`
+
+3. Start app.py with:
+
+    `python app.py`
 
 # Serverless backend
 
