@@ -24,13 +24,16 @@ Click the *Give it a try* button and select a 160x160 8-channel World View 3 Sat
 ### Visualizing the segmentation
 ![Visualization of AI's results](dash-2.PNG)
 
-### Visualization of AI's results:
-
 The data visualization shows the image being labeled by the corine land cover parameters, identifying the ten classes that are visualized in the bar chart, fulfilling the interactivity of being able to update the image and specify which of those ten classes you want to visualize individually.
 
 ## Frontend deployment
 
-- Install pip requirements
+In order to run this project locally, on your machine, follow these steps:
+
+1. Install the frontend requirements:
+        pip install -r requirements.txt
+2. 
+3. 
 - Modificar ip en código, cambiar por localhost.
 - app.py & app_dash.py
 
