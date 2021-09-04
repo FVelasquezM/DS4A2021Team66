@@ -64,4 +64,23 @@ The model was trained using World View 3 sensor data, taken from Kaggle's [Dstl 
 
 The trained model achieved a test jaccard score of 0.49.
 
-<TODO>
+## API
+
+The backend API can be accessed on the following URL: https://hxy1cn1sl8.execute-api.us-east-1.amazonaws.com/Prod/segment_tiff
+The API expects to receive a POST petition in which the message body is a base64 encoded 160 x 160 8-channel World View 3 satellite image. Optionally, you may include a threshold query param, which is a value between 0 and 1 specifiying the segmentation threshold to use, if none is specified, 0.5 will be used. 
+
+A sample Postman collection can be found in the backend folder.
+
+
+## Backend deployment
+
+1. To deploy the backend, firstly install AWS SAM following [this guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)  and then,  configure your AWS credentials following [this guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
+2. Modify app.py so that the store_to_db function contains your RDS credentials.
+3. Build the backend with 
+
+    `sam build`
+
+4. Deploy the backend with 
+
+    `sam deploy`
+    
